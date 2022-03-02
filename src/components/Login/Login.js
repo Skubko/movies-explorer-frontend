@@ -1,49 +1,30 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Form from '../Form/Form';
-import logo from '../../images/logo.svg';
+// Компонент "Авторезации пользователя"
 
-function Login ({ onLogin }) {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+import React from "react"; //Инициализация библиотеки
+import './Login.css'; // Ф-ил стилей
 
-  function handleEmailChange (e) {
-    setEmail(e.target.value)
-  }
+import Input from "../Input/Input";
+import WithForm from "../WithForm/WithForm"; //Инициализация стилей
 
-  function handlePasswordChange (e) {
-    setPassword(e.target.value)
-  }
-
-  function handleSubmit (e) {
-    e.preventDefault()
-    onLogin(email, password)
-  }
+function Login() {
 
   return (
-    <div className='page_type_auth'>
-     <Link to='/'> 
-        <img 
-          className='app__logo'
-          src={logo}
-          alt='логотип movies-explorer'
-        />
-      </Link> 
-      <Form
-        title='Рады видеть!'
-        buttonText='Войти'
-        caption='Ещё не зарегистрированы?'
-        containsAnyImages={false}
-        containsAnyInputs={true}
-        containsAnyForms={true}
-        linkText='Регистрация'
-        linkEndpoit='/signup'
-        onEmailChange={handleEmailChange}
-        onPasswordChange={handlePasswordChange}
-        onFormSubmit={handleSubmit}
-      />
-    </div>
-  )
+    <section className="login">
+      <WithForm
+        titleForm="Рады видеть!"
+        titleBtnSubmit="Войти"
+        subTitle="Ещё не зарегистрированы?"
+        btnLink="Регистрация"
+        modMargin="form__btn-submit_type_login"
+        link="/signup"
+      >
+        <fieldset className={`form__fieldset`}>
+          <Input label="E-mail" type="email"  placeholder="Ваш e-mail" required={true}/>
+          <Input label="Пароль" type="password" placeholder="Ваш пароль" required={true} />
+        </fieldset>
+      </WithForm>
+    </section>
+  );
 }
 
 export default Login;

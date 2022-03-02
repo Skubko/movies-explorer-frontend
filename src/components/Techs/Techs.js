@@ -1,26 +1,30 @@
-import React from 'react';
-import './Techs.css';
+import React from "react";
+import "./Techs.css";
+import { technologies } from "../../utils/constant";
+import Heading from "../Heading/Heading";
 
-function Techs () {
-  return ( 
-    <section className='techs' id='techs'>
-      <h2 className='app__section-title '>Технологии</h2>
-      <h3 className='techs__title techs__heading'>7 технологий</h3>
-      <p className='techs__capture'>
-        На курсе веб-разработки мы освоили технологии, 
-        которые применили в дипломном проекте.
-      </p>
-      <ul className='techs__list'>
-        <li className='techs__list-item'>HTML</li>
-        <li className='techs__list-item'>CSS</li>
-        <li className='techs__list-item'>JS</li>
-        <li className='techs__list-item'>React</li>
-        <li className='techs__list-item'>Git</li>
-        <li className='techs__list-item'>Express.js</li>
-        <li className='techs__list-item'>mongoDB</li>
-      </ul>
+function Techs() {
+  const techsList = technologies.map((m) => {
+    return (
+      <div className="techs__icon-card" key={m.id}>
+        <p className="techs__icon-text">{m.text}</p>
+      </div>)
+  });
+
+  return(
+    <section id={'технологии'} className={`techs`}>
+      <Heading id="#Technologies" title="Технологии" paddingSize="m"/>
+      <div className="techs__content">
+        <h2 className="techs__title">7 технологий</h2>
+        <h4 className="techs__sub-title">
+          На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.
+        </h4>
+        <div className="techs__container">
+          {techsList}
+        </div>
+      </div>
     </section>
-  );
+  )
 }
 
-export default Techs
+export default Techs;

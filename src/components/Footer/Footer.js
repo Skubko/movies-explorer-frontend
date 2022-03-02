@@ -1,19 +1,19 @@
-import React from 'react';
-import './Footer.css';
-import Contacts from '../Contacts/Contacts';
+import React from "react"; //Инициализация библиотеки (не обязательное действие)
+import './Footer.css'; //Инициализация стилей
 
-function Footer () {
-  return (
-    <footer className='footer'>
-      <p className='footer__project-info'>Учебный проект Яндекс.Практикум х BeatFilm.</p>
-        <div className='footer__copyrights'>
-          <p className='footer__date'>
-          &copy; {new Date().getFullYear()}
-          </p>
-          <Contacts parentClassName='footer'/>
+import Navigation from "../Navigation/Navigation";
+
+function Footer() {
+
+  return(
+    <footer className={`footer`}>
+      <h3 className={`footer__title`}>Учебный проект Яндекс.Практикум х BeatFilm.</h3>
+      <div className={`footer__container`}>
+        <p className="footer__copyright">&copy; {new Date().getFullYear()}</p>
+        <Navigation />
       </div>
     </footer>
-  );
+  )
 }
 
 export default Footer;

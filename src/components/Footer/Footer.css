@@ -1,45 +1,78 @@
+/* Laptop PC */
 .footer {
-  padding: 79px 70px 0;
-  line-height: 1.21;
+  margin: 0;
+  padding: 0 70px;
+
+  background: #FFFFFF;
+  min-height: 178px;
+}
+
+.footer__title {
+  border-bottom: 1px solid #E8E8E8;
+  margin: 0;
+  padding: 80px 0 20px 0;
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: normal;
   font-size: 13px;
-}
+  line-height: 16px;
 
-.footer__copyrights {
-  display: flex;
-  justify-content: space-between;
-  border-top: solid 1px #424242;
-}
-
-.footer__date {
-  margin: 20px 0;
-}
-
-.footer__project-info {
-  margin: 0 0 20px;
-  color: #8B8B8B;
   text-align: center;
+
+  color: #A0A0A0;
 }
-  
-@media screen and (max-width: 1279px) {
+
+.footer__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  margin: 0 auto;
+  padding: 0;
+}
+
+.footer__copyright {
+  margin: 20px 0;
+  padding: 0;
+
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+
+  color: #000000;
+}
+
+/* Planshet */
+@media screen and (max-width: 959px) {
   .footer {
-    padding: 79px 30px 0;
+    padding: 0 30px;
   }
 }
-  
+
+/* Mobile */
 @media screen and (max-width: 767px) {
   .footer {
-    padding: 79px 10px 10px;
+    padding: 0 10px;
+  }
+
+  .footer__title {
     font-size: 12px;
+    line-height: 15px;
   }
 
-  .footer__copyrights {
+  .footer__container {
     flex-direction: column-reverse;
-    align-content: center;
+    justify-content: center;
   }
 
-  .footer__date {
-    margin: 0;
-    color: #8B8B8B;
-    text-align: center;
+  .footer__copyright {
+    margin: 0 auto 10px auto;
+
+    font-size: 12px;
+    line-height: 15px;
+
+    color: #A0A0A0;
   }
 }

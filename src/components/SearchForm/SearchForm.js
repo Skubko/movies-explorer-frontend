@@ -1,54 +1,22 @@
-import React from 'react';
-import './SearchForm.css';
+import React from "react";
+import "./SearchForm.css";
+import Checkbox from "../Checkbox/Checkbox";
 
-function SearchForm (props) {
-  return (
-    <form 
-    className='search-form'
-    onSubmit={props.onFormSubmit}
-    noValidate 
-    autoComplete='off'
-  > 
-    <div className='search-form__container'>
-      <div className='search-form__icon'></div> 
-        <div className='search-form__input-container'>
-          <input
-            className='search-form__input'
-            id='query' 
-            name='query' 
-            type='text'
-            placeholder='Фильм'
-            onChange={props.onSearchQueryChange}
-            required
-          />
-          <button
-            className={`search-form__submit-btn opacity-transition
-              ${(props.searchQuery !== '')
-                ? 'search-form__submit-btn_active'
-                : 'search-form__submit-btn_disabled'
-              }
-            `} 
-            type='submit'
-            disabled={(props.searchQuery !== '') ? false : true
-            }
-          >
-            Найти
-          </button>
-        </div>
-      <label className='search-form__filter' htmlFor='checkbox-toggle'>
-        <input 
-          className='search-form__checkbox'
-          type='checkbox'
-          checked={props.filterCheckboxState}
-          onChange={props.onFilterCheckboxChange}
-          id='checkbox-toggle'
-          disabled={false}
-        />
-        <span className='search-form__checkbox-capture'>Короткометражки</span>
-      </label>
-    </div>
-  </form>
+
+function SearchForm() {
+
+  return(
+    <section className="search-form">
+      <div className="search-form__container">
+        <input type="text" className="search-form__input" placeholder="Фильмы"/>
+        <span className="search-for__span" />
+      </div>
+
+      <Checkbox label="Короткометражки" />
+
+      <span className="search-form__line" />
+    </section>
   );
 }
 
-export default SearchForm
+export default SearchForm;

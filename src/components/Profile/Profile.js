@@ -1,47 +1,41 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+//Компоннт "Редактирования пользователя"
+import React from "react";
 import './Profile.css';
-import EditProfilePopup from '../EditProfilePopup/EditProfilePopup';
-import Header from '../Header/Header';
+import Header from "../Header/Header";
+import NavMenuHeader from "../NavMenuHeader/NavMenuHeader";
 
-function Profile (props) {
-  return ( 
-    <div className='page-container'>
-      <Header loggedIn={props.loggedIn}/>
-      <section className='profile'>
-        <h2 className='profile__title'>Привет, {props.name}!</h2>
-        <div className='profile__user-info-container'>
-          <div className='profile__user-info'>
-            <p className='profile__user-info_data'>Имя</p>
-            <p className='profile__user-info_value'>{props.name}</p>
-          </div>
-          <div className='profile__user-info'>
-            <p className='profile__user-info_data'>E-mail</p>
-            <p className='profile__user-info_value'>{props.email}</p>
-          </div>
-        </div>
-        <button
-          className='profile__edit-button'
-          type='button'
-          aria-label='Редактировать'
-          onClick={props.onEditProfileClick}
-        >
-          Редактировать
-        </button>
-        <Link to='signin' 
-          className='profile__link'
-          onClick={props.onSignOut}
-        >
-          Выйти из аккаунта
-        </Link>
+function Profile() {
+  const nameUsers = 'Максим';
+
+  return (
+    <>
+      <Header theme="white">
+        <NavMenuHeader />
+      </Header>
+
+      <section className="profile">
+        <form className="profile__form">
+          <h2 className="profile__form-title">Привет, {nameUsers}!</h2>
+          <fieldset className="profile__form-set">
+            <div className="profile__form-container container-top">
+              <label className="profile__form-label" htmlFor="name">Имя</label>
+              <input className="profile__form-input" id="name"  type="text" placeholder="Ваше имя" value="Максим" />
+            </div>
+            <div className="profile__form-container container-bottom">
+              <label className="profile__form-label" htmlFor="mail">E-mail</label>
+              <input className="profile__form-input" id="mail"  type="email"  placeholder="Ваш e-mail" value="test@test.ru"/>
+            </div>
+
+          </fieldset>
+
+          <button className="profile__form-btn-submit button__reset hover-opacity">Редактировать</button>
+          <button className="profile__form-btn-exit button__reset hover-opacity">Выйти из аккаунта</button>
+        </form>
+
+
       </section>
-      <EditProfilePopup 
-        isEditProfilePopupOpened={props.isEditProfilePopupOpened} 
-        onPopupClose={props.onPopupClose}
-        onEditProfile={props.onEditProfile}
-      />
-    </div>
+    </>
   );
 }
 
-export default Profile
+export default Profile;
