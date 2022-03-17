@@ -1,20 +1,52 @@
-import React from "react";
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import "./SearchForm.css";
-import Checkbox from "../Checkbox/Checkbox";
 
+function SearchForm({ onSubmit, onChecked }) {
+  const location = useLocation();
+  const [data, setData] = useState({});
 
-function SearchForm() {
+  useEffect(() => {
+    if (location.pathname === '/movies') {
+      const SearchHistory = localStorage.getItem('SearchHistory');
+      if (SearchHistory) {
+        const savedSearch = JSON.parse(SearchHistory)
+        setData(savedSearch.params);
+      }
+    }
+  }, []);
 
-  return(
+  function handleChange(e) {
+    const { target: { name, value } } = e;
+    setData({ ...data, [name]: value });
+  }
+
+  function handleChecked(e) {
+    const { target: { name, checked } } = e;
+    setData({ ...data, [name]: checked });
+    onChecked({ ...data, [name]: checked })
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    onSubmit(data);
+  }
+
+  return (
     <section className="search-form">
       <div className="search-form__container">
-        <input type="text" className="search-form__input" placeholder="Фильмы"/>
-        <span className="search-for__span" />
+        <form className="search-form__form" onSubmit={handleSubmit}>
+          <input type="text" name="request" className="search-form__input" placeholder="Фильм" onChange={handleChange} value={data?.request ?? ''} required />
+          <button type="submit" className="search-form__submit">Найти</button>
+        </form>
+          <div className="search-form__switch-container">
+            <div className="switch">
+              <input type="checkbox" name="isShort" className="switch__input" onChange={handleChecked} checked={data?.isShort ?? false} />
+            </div>
+            <label htmlFor="isShort" className="search-form__label">Короткометражки</label>
+          </div>
+
       </div>
-
-      <Checkbox label="Короткометражки" />
-
-      <span className="search-form__line" />
     </section>
   );
 }

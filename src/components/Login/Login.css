@@ -1,18 +1,11 @@
-/* Laptop PC */
-.login {
-  margin-top: 70px;
-}
-
-/* Planshet */
-@media screen and (max-width: 959px) {
-  .login {
-    margin-top: 232px;
-  }
-}
-
-/* Mobile */
-@media screen and (max-width: 767px) {
-  .login {
-    margin-top: 56px;
-  }
-}
+@import url(../../blocks/login/login.css);
+@import url(../../blocks/login/login__container.css);
+@import url(../../blocks/login/login__logo.css);
+@import url(../../blocks/login/login__error.css);
+@import url(../../blocks/login/login__title.css);
+@import url(../../blocks/login/login__form.css);
+@import url(../../blocks/login/login__label.css);
+@import url(../../blocks/login/login__input.css);
+@import url(../../blocks/login/login__submit.css);
+@import url(../../blocks/login/login__text.css);
+@import url(../../blocks/login/login__link.css);

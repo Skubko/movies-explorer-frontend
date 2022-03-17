@@ -40,6 +40,9 @@
 }
 
 .preloader {
+  margin: 0px;
+  padding: 0px;
+  background: #fff;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -1,0 +1,23 @@
+.promo {
+  display: flex;
+  flex-direction: row;
+  min-height: 524px;
+  background: #073042 url(../../images/promo.svg)  no-repeat center 82px;
+  background-size: 320px;
+}
+
+@media screen and (max-width: 768px) {
+  .promo {
+    min-height: 784px;
+    background: #073042 url(../../images/promo.svg)  no-repeat center 224px;
+  }
+
+}
+
+@media screen and (max-width: 320px) {
+  .promo {
+    min-height: 570px;
+    background: #073042 url(../../images/promo.svg) no-repeat center 142px;
+    background-size: 248px;
+  }
+}

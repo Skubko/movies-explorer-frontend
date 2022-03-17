@@ -1,19 +1,20 @@
-import React from "react"; //Инициализация библиотеки (не обязательное действие)
-import './Footer.css'; //Инициализация стилей
-
-import Navigation from "../Navigation/Navigation";
+import './Footer.css';
 
 function Footer() {
+  const time = new Date();
 
-  return(
-    <footer className={`footer`}>
-      <h3 className={`footer__title`}>Учебный проект Яндекс.Практикум х BeatFilm.</h3>
-      <div className={`footer__container`}>
-        <p className="footer__copyright">&copy; {new Date().getFullYear()}</p>
-        <Navigation />
+  return (
+    <footer className="footer">
+      <div className="footer__container">
+        <p className="footer__about">Учебный проект Яндекс.Практикум х BeatFilm.</p>
+        <p className="footer__copyright">&copy; {time.getFullYear()}</p>
+        <div className="footer__links">
+          <a href="https://practicum.yandex.ru/web/" className="footer__link">Яндекс.Практикум</a>
+          <a href="https://github.com/Skubko" className="footer__link">GitHub</a>
+        </div>
       </div>
     </footer>
-  )
+  );
 }
 
 export default Footer;

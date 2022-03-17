@@ -1,25 +1,40 @@
-import React from "react";
-import './MoviesCard.css';
+import './MoviesCard.css'
 
-function MoviesCard({ movieData }) {
-  const [modLike, setModLike] = React.useState(''); //Удалить после написания ф-ла
-  //Удалить после написания ф-ла
-  function likeClick() {
-    setModLike('card__btn-like_active');
+import { useLocation } from 'react-router-dom';
+
+const baseUrl = 'https://api.nomoreparties.co';
+
+function MoviesCard({ movie, onDelete, onAdd }) {
+  const { nameRU, duration, image, isSaved, trailerLink } = movie;
+  const location = useLocation();
+
+  function getDuration(duration) {
+    const hours = Math.floor(duration / 60);
+    const minutes = duration % 60;
+    return `${hours ? `${hours}ч` : ''} ${minutes}м`.trim()
   }
-  console.log(modLike);
 
-  return(
-    <section className={`card`}>
-      <div className="card__container-info">
-        <div className="card__movie-item">
-          <h3 className="card__title">{movieData.nameRU}</h3>
-          <p className="card__duration">{movieData.duration}</p>
-        </div>
-        <button className={`card__btn-like ${modLike} hover-opacity`} onClick={likeClick}/>
+  function handleClick() {
+    if (isSaved) {
+      onDelete(movie.savedId);
+    }
+    else {
+      onAdd(movie)
+    }
+  }
+
+  return (
+    <li className="card">
+      <div className="card__container">
+        <h2 className="card__title">{nameRU}</h2>
+        {location.pathname === '/movies'
+          ? (<button type="button" onClick={handleClick} className={`card__like ${isSaved ? "card__like_active" : ""}`}></button>)
+          : (<button type="button" onClick={() => onDelete(movie._id)} className='card__like card__like_delete' ></button>)}
+
       </div>
-      <img src={movieData.image} alt={`Постер к фильму ${movieData.nameRU}`} className="card__img"/>
-    </section>
+      <p className="card__subtitle">{getDuration(duration)}</p>
+      <a href={trailerLink} target="myTab"><img src={image.url ? `${baseUrl}${image.url}` : image} alt={`Постер фильма ${nameRU}`} className="card__image" /></a>
+    </li>
   );
 }
 

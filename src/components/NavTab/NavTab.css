@@ -19,3 +19,19 @@
   color: #FFFFFF;
 }
 
+/* Planshet */
+@media screen and (max-width:  768px) {
+  .NavTab__link {
+    font-size: 13px;
+    line-height: 16px;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 320px) {
+  .NavTab__link {
+    font-size: 11px;
+    line-height: 16px;
+    margin: 0 12px;
+  }
+}

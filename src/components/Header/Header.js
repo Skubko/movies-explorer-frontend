@@ -1,16 +1,27 @@
-import React from "react"; //Инициализация библиотеки (не обязательное действие)
-
 import './Header.css';
-import Logotype from "../Logotype/Logotype"; //Инициализация стилей
 
-function Header({ theme, children }) {
+import { Link, useLocation } from 'react-router-dom';
+import Navigation from '../Navigation/Navigation';
 
-  return(
-    <header className={`header header_theme_${theme}`} >
-      <Logotype link='/' modStyle=''/>
-      {children}
+function Header({ loggedIn }) {
+  const location = useLocation();
+
+  const elementLogin = (
+    <div className="heder__login-container">
+      <Link to="/signup" className="header__link">Регистрация</Link>
+      <Link to="/signin" className="heder__button">Войти</Link>
+    </div>
+  );
+
+  return (
+    <header className={`${location.pathname === '/' ? "header_color_dark-green" : null} header`}>
+      <div className="header__container">
+        <Link to="/" className="heder__logo"></Link>
+
+        {loggedIn ? (<Navigation />) : elementLogin}
+      </div>
     </header>
-  )
+  );
 }
 
 export default Header;

@@ -1,0 +1,28 @@
+.section__title {
+  width: 100%;
+  margin: 0px;
+  color: #000;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 22px;
+line-height: 27px;
+/* identical to box height */
+letter-spacing: -0.04em;
+}
+
+.section__title::after {
+  content: '';
+  display: block;
+
+  margin-top: 23px;
+  border-bottom: 1px solid #000;
+}
+
+@media (max-width: 320px) {
+  .section__title::after {
+    margin-top: 28px;
+    width: 90%;
+  }
+}

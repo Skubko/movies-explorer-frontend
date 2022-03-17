@@ -1,0 +1,14 @@
+.movies-list {
+  padding: 0px;
+  margin: 0px 70px 30px 70px;
+  max-width: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 800px) {
+  .movies-list {
+    margin: 0px 30px 30px 30px;
+  }
+}

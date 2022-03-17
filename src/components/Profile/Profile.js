@@ -1,41 +1,63 @@
-//Компоннт "Редактирования пользователя"
-import React from "react";
 import './Profile.css';
-import Header from "../Header/Header";
-import NavMenuHeader from "../NavMenuHeader/NavMenuHeader";
 
-function Profile() {
-  const nameUsers = 'Максим';
+import { useContext, useState } from 'react';
+import { CurrentUserContext } from '../../context/CurrentUserContext'
+
+function Profile({ onSubmit, onOut }) {
+  const currentUser = useContext(CurrentUserContext);
+  const [data, setData] = useState({
+  name: currentUser.name,
+  email: currentUser.email,
+  });
+  const [editMode, setEditMode] = useState(false);
+
+  function handleChange(e) {
+    const { target: { name, value } } = e;
+    setData({ ...data, [name]: value });
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (await onSubmit(data)) {
+      setEditMode(false);
+    }
+  }
 
   return (
-    <>
-      <Header theme="white">
-        <NavMenuHeader />
-      </Header>
-
-      <section className="profile">
-        <form className="profile__form">
-          <h2 className="profile__form-title">Привет, {nameUsers}!</h2>
-          <fieldset className="profile__form-set">
-            <div className="profile__form-container container-top">
-              <label className="profile__form-label" htmlFor="name">Имя</label>
-              <input className="profile__form-input" id="name"  type="text" placeholder="Ваше имя" value="Максим" />
-            </div>
-            <div className="profile__form-container container-bottom">
-              <label className="profile__form-label" htmlFor="mail">E-mail</label>
-              <input className="profile__form-input" id="mail"  type="email"  placeholder="Ваш e-mail" value="test@test.ru"/>
-            </div>
-
-          </fieldset>
-
-          <button className="profile__form-btn-submit button__reset hover-opacity">Редактировать</button>
-          <button className="profile__form-btn-exit button__reset hover-opacity">Выйти из аккаунта</button>
-        </form>
-
-
-      </section>
-    </>
+    <form className="profile" onSubmit={handleSubmit}>
+      <div className="profile__container">
+        <h1 className="profile__title">{`Привет, ${data.name}!`}</h1>
+        <div className="profile__item">
+          <label className="profile__label">Имя</label>
+          {editMode
+            ? (<input type="text" name="name" className="profile__input" onChange={handleChange} value={data.name} required />)
+            : (<p className="profile__text">{data.name}</p>)}
+        </div>
+        <div className="profile__item">
+          <label className="profile__label">E-mail</label>
+          {editMode
+            ? (<input type="email" name="email" className="profile__input" onChange={handleChange} value={data.email} required />)
+            : (<p className="profile__text">{data.email}</p>)}
+        </div>
+      </div>
+      <div className="profile__menu">
+        {editMode
+          ? (
+            <>
+              <p className="profile__error"></p>
+              <button type="submit" className="profile__button-submit" disabled={!(data.name !== currentUser.name || data.email !== currentUser.email)}>Сохранить</button>
+            </>
+          )
+          : (
+            <>
+              <button type="button" className="profile__button" onClick={() => setEditMode(true)}>Редактировать</button>
+              <button type="button" className="profile__button profile__button_dangerous" onClick={onOut} >Выйти из аккаунта</button>
+            </>
+          )}
+      </div>
+    </form >
   );
 }
 
 export default Profile;
+

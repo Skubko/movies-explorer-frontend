@@ -1,0 +1,22 @@
+.icon-search {
+  margin: 0;
+  padding: 0;
+  /*padding-bottom: 15px;*/
+height: 34px;
+width: 34px;
+  border: none;
+
+  background: #fff;
+  color: #959595;
+/*transform: rotate(45deg);*/
+  background-image: url(../../images/icon-search.svg);
+  background-repeat: no-repeat;
+  background-size: 34px 34px;
+  background-position: center;
+}
+
+@media (max-width: 400px) {
+  .icon-search {
+    background: none;
+  }
+}

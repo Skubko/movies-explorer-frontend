@@ -1,24 +1,16 @@
-import React from "react";
-import "./Portfolio.css";
-import { porfolioConfig } from "../../utils/constant";
+import './Portfolio.css';
+
 function Portfolio() {
-
-  const renderListPortfolio = porfolioConfig.map((promo) => {
-    return (
-      <li key={promo.id} className="portfolio__list hover-opacity">
-        <a className="portfolio__link" href={promo.link} target="_blank" rel="noreferrer">
-          <h4 className="portfolio__title-link">{promo.title}</h4>
-        </a>
-      </li>
-    )
-  });
-
-  return(
-    <section className={`portfolio`}>
-      <h3 className="portfolio__title">Портфолио</h3>
-      <ul className="portfolio__works">
-        {renderListPortfolio}
-      </ul>
+  return (
+    <section className="portfolio">
+      <div className="portfolio__container">
+        <h2 className="portfolio__title">Портфолио</h2>
+        <div className="portfolio__links">
+          <a href="https://github.com/Skubko/how-to-learn" className="portfolio__link">Статичный сайт</a>
+          <a href="https://skubko.github.io/russian-travel/index.html" className="portfolio__link">Адаптивный сайт</a>
+          <a href="https://github.com/Skubko/mesto-react" className="portfolio__link">Одностраничное приложение</a>
+        </div>
+      </div>
     </section>
   );
 }

@@ -1,0 +1,12 @@
+.about-project__scale_color_green {
+  width: 20%;
+
+
+  background: #2BE080;
+  color: #000000;
+}
+@media (max-width: 600px) {
+  .about-project__scale_color_green {
+    min-width: 100px;
+  }
+}
