@@ -1,0 +1,22 @@
+.navigation__nav-links {
+  grid-column: -3/-2;
+
+  justify-self: right;
+
+  display: flex;
+  gap: 20px;
+}
+
+@media (max-width: 770px) {
+  .navigation__nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 400px) {
+  .navigation__nav-links {
+    gap: 24px;
+  }
+}

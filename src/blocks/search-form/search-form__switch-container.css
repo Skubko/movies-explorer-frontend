@@ -1,0 +1,29 @@
+.search-form__switch-container {
+  /*grid-column: 1/-1;
+
+  width: 100%;
+  padding-top: 0px;*/
+  padding: 0px 29px;
+  height: 40px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: flex-end;
+
+  border-left: 1px solid #CBCBCB;
+}
+
+@media (max-width: 768px) {
+  .search-form__switch-container {
+   /* padding-top: 43px;*/
+   padding: 0px 19px;
+  }
+}
+
+@media (max-width: 400px) {
+  .search-form__switch-container {
+   /* padding-top: 43px;*/
+   border-left: none;
+   border-bottom: 1px solid #E8E8E8;
+  }
+}

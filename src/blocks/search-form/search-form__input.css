@@ -1,0 +1,30 @@
+.search-form__input {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 15px;
+  border: none;
+  width: 100%;
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  text-align: center;
+  color: #000;
+
+  background: none;
+  background-image: url(../../images/icon-search.svg);
+  background-repeat: no-repeat;
+  background-size: 34px 34px;
+  background-position: 0% 0%;
+}
+
+@media (max-width: 400px) {
+  .search-form__input {
+    background: none;
+
+    font-size: 18px;
+    line-height: 22px;
+    text-align: left;
+  }
+}

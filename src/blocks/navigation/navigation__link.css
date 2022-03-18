@@ -1,0 +1,25 @@
+.navigation__link {
+  margin: 0;
+margin-left: 50px;
+  font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 16px;
+  text-align: right;
+  text-decoration: none;
+  color: #000;
+}
+
+@media (max-width: 500px) {
+  .navigation__link {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .navigation__link {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
